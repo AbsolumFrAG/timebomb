@@ -38,7 +38,7 @@ public class LobbyController {
         String playerName = message.getPlayerName();
 
         if(!gameService.isGameRunning()) {
-            log.info("New player joined : {}", playerName);
+            log.info("Un nouveau joueur a rejoint : {}", playerName);
             gameService.newPlayer(playerName);
         }
 
@@ -52,7 +52,7 @@ public class LobbyController {
     @SendTo("/server/player")
     public PlayerLobbyMessage quitGame(QuitMessage message){
         String playerName = message.getPlayerName();
-        log.info("Player quit : {}", playerName);
+        log.info("Un joueur a quitté : {}", playerName);
         gameService.removePlayer(playerName);
         return new PlayerLobbyMessage(playerName, false);
     }

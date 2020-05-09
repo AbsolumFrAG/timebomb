@@ -43,6 +43,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("Player %s (%s) : "+ cards.stream().map(Pair::toString).collect(Collectors.joining(",")), name, team.name());
+        return String.format("Joueur %s (%s) : "+ cards.stream().map(Pair::toString).collect(Collectors.joining(",")), name, team.name());
     }
 }

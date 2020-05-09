@@ -155,8 +155,8 @@ public class GameService {
     }
 
     private void displayGameState() {
-        log.info("============= GAME STATE ================");
-        log.info("Current player : {}", currentPlayer.getName());
+        log.info("============= ÉTAT DE LA PARTIE ================");
+        log.info("Joueur actuel : {}", currentPlayer.getName());
         for (Player p : players) {
             log.info(p.toString());
         }

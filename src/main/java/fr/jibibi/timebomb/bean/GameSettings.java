@@ -51,7 +51,7 @@ public class GameSettings {
     @Override
     public String toString() {
         return String.format(
-                "Game : [%d Mor. vs %d Sher.][%d normals; %d defuse; %d BigBen][%s cards]",
+                "Partie : [%d Mor. vs %d Sher.][%d neutres; %d désamorceur; %d bombe][%s cartes]",
                 moriartyCount,
                 sherlockCount,
                 normalCardCount,

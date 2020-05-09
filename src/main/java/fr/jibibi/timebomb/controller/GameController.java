@@ -35,7 +35,7 @@ public class GameController {
     @MessageMapping("/start")
     @SendTo("/server/started")
     public GameStateMessage startGame(String message){
-        log.info("Game is starting : {}", message);
+        log.info("La partie commence : {}", message);
         gameService.startGame();
         return generateGameState(null);
     }
@@ -44,7 +44,7 @@ public class GameController {
     @SendTo("/server/state")
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     public GameStateMessage playerPlayed(CutMessage message){
-        log.info("Player has played : {}", message);
+        log.info("Le joueur a joué : {}", message);
         Card c = gameService.getPlayers().stream().filter(p -> p.getName().equals(message.getPlayer())).findFirst().get().removeCard(message.getId());
         gameService.cardCut(message.getPlayer(), c);
         gameService.decreaseTurnCount();
@@ -66,7 +66,7 @@ public class GameController {
     @MessageMapping("/playersCards")
     @SendToUser("/server/playerCard")
     public CardsMessage retrieveCards(String playerName){
-        log.info("Sending cards for player {}", playerName);
+        log.info("Envoi des cartes pour le joueur {}", playerName);
         CardsMessage message = new CardsMessage();
 
         for(Player p : gameService.getPlayers()){
@@ -88,7 +88,7 @@ public class GameController {
     @MessageMapping("/askReveal")
     @SendToUser("/server/reveal")
     public HashMap<String, Object> revealRoles(JoinMessage player){
-        log.info("Sending reveal to player {}", player.getPlayerName());
+        log.info("Envoi de révélation au joueur {}", player.getPlayerName());
         HashMap<String, Object> reveals = new HashMap<>();
 
         HashMap<String, Teams> reveal = new HashMap<>();
